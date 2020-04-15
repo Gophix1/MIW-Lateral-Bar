@@ -1,0 +1,626 @@
+<html>
+<head>
+
+<title>My Irreal World</title>
+<link rel="shortcut icon" href="./img/icon/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="msapplication-navbutton-color" content="#000000">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@jaames/iro/dist/iro.min.js"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+<style>
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@font-face {font-family: NexaBold; src: url('https://static.tumblr.com/txlbzbi/dxKpgrjd7/nexa_bold.otf');}
+
+::-webkit-scrollbar {width: 4px; height: 3px;}
+::-webkit-scrollbar-track {background: #f1f1f1;}
+::-webkit-scrollbar-thumb {background: #888;}
+::-webkit-scrollbar-thumb:hover {background: #555;}
+
+* {box-sizing: border-box;}
+html {scroll-behavior: smooth; -webkit-tap-highlight-color: transparent;}
+body {background-repeat: no-repeat; background-attachment: fixed; background-size: cover; margin: 0; font-family: roboto; height: 100%; background-color: black;}
+
+.darker {width: 100%; height: 100%; background-color: #0000005c; position: fixed; top: 0px; left: 0px; z-index: -1;}
+
+.glow_green {background-color: #c4ffb8;}
+.glow_purple {background-color: #f1d6ff;}
+
+.playlists iframe {display: block; height: 500px;}
+
+.changelog div:active span {display: block;}
+
+.center {text-align: center;}
+
+hr {width: 7px; height: 7px; background-color: black; border:none; margin: 10px auto; border-radius: 50%;}
+
+.iro__colorPicker {margin: auto; padding: 10px;}
+
+/*==========================| DESATIVAÇÃO E REMOÇÃO |=========================*/
+
+nav, nav img {-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-touch-callout: none;}
+
+body::-webkit-scrollbar, input, .changelog span, #navhide, nav p, .sobre, .changelog, .playlists, .logo_desktop, .logo_mobile {display: none;}
+
+/*==========================| DESATIVAÇÃO E REMOÇÃO |=========================*/
+
+/*===============================| SESSÕES |===============================*/
+
+main {margin-left: 56px;}
+
+section {padding: 15px; display: grid; grid-column-gap: 15px; grid-template-columns: auto auto auto; grid-row-gap: 15px;}
+section > div {background-color: white; color: black; border-radius: 5px; overflow: hidden; box-shadow: 2px 2px 4px black;}
+section div p:first-child {text-align: center; padding: 7px; background-color: #23004c; margin: 0px; font-family: nexabold; text-transform: uppercase; letter-spacing: 1px; font-size: 11px; word-spacing: 2px; text-shadow: 2px 2px 3px black; color: white;}
+section div p {margin: 0px;}
+section div p:not(:first-child) {padding: 10px;}
+section div p:last-child {margin-bottom: 0px;}
+
+.entradas {text-align: justify;}
+.sobre, .changelog, .playlists, .darkmode, .key {text-align: center;}
+
+.changelog p:not(:first-child), .entradas p:not(:first-child) {white-space: pre-line;}
+
+.sobre {grid-template-columns: auto;}
+.playlists {grid-template-columns: auto auto;}
+
+.fa {text-decoration: none; color: black; margin: 0px 20px;}
+
+/*===============================| SESSÕES |===============================*/
+
+/*==============================| NAVEGAÇÃO |==============================*/
+
+/*Animação rápida para ícones mobile*/
+.animated.faster {
+  -webkit-animation-duration: 300ms;
+  animation-duration: 300ms;
+}
+
+#logo_nav_desktop img {width: 36px;}
+#logo_nav_desktop {margin-bottom: 5px;}
+
+nav {width: auto; background-color: black; position: fixed; height: 100%; overflow: auto; color: white;}
+nav div {display: flex; align-items: center; padding: 10px;}
+nav div:hover {cursor: pointer;}
+nav div:active {background-color: black; color: white; filter: invert(100%);}
+nav div p {margin: 0px 0px 0px 5px;}
+
+.navdark {background-color: #202124;}
+
+input {margin-left: -10px; border: none; position: absolute; width: 100%; height: 56px; opacity: 0; cursor: pointer; padding: 0px; z-index: 3;}
+
+/*==============================| NAVEGAÇÃO |==============================*/
+
+/*===============================| IMAGENS |===============================*/
+
+.logo_desktop {position: absolute; width: 36px; height: 36px; margin: 10px;}
+
+/*===============================| IMAGENS |===============================*/
+
+/*==============================| TRADUCAO |==============================*/
+
+ul {list-style-type: none; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; padding: 15px; margin: 0px;}
+
+.traducao li {float: left; padding: 0px 10px 5px 10px; width: 35px;}
+
+.traducao li p:nth-child(1) {padding: 0px; color: black; background-color: white; text-shadow: none; font-size: 13px;}
+
+.traducao li p:nth-child(2) {padding: 0px; font-size: 1.3em; font-family: SGA;}
+
+/*==============================| TRADUCAO |==============================*/
+
+@media (max-width: 1500px) {
+section {grid-template-columns: auto auto auto;}
+}
+
+@media (max-width: 1100px) {
+section {grid-template-columns: auto auto;}
+}
+@media (min-width: 800px) {
+.sobre, .ask {margin: auto; width: 60%;}
+}
+
+@media (max-width: 800px) {
+.logo_mobile {display: block; width: 50px; margin: auto; padding-top: 15px;  -webkit-filter: drop-shadow(2px 2px 1px black);}
+
+section, .playlists {grid-template-columns: auto;}
+}
+
+/*===============================| MOBILE |===============================*/
+
+@media (max-width: 500px) {
+::-webkit-scrollbar, #logo_nav_desktop, #wallpaper, #key, #darkmode, #playlists, #changelog, #sobre, #entradas, #navhide2, #color {display: none;}
+
+.sobre {width: auto; margin: 0px;}
+
+.logo_mobile {display: block; width: 50px; margin: auto; padding-top: 15px;  -webkit-filter: drop-shadow(2px 2px 1px black);}
+
+main {margin-left: 0px;}
+section {grid-template-columns: auto; grid-row-gap: 15px;}
+.playlists {grid-template-columns: auto;}
+
+p {font-size: 14px;}
+
+nav {right: 10px; margin: 0px; z-index: 2; color: white; bottom: 10px; height: auto; width: auto; background-color: transparent;}
+nav div {height: 40px; width: 40px; background-color: black; border-radius: 50%; margin-top: 10px; display: block; box-shadow: 2px 2px 3px black;}
+nav div:first-child, nav div:last-child {margin-top: 0px;}
+nav div, nav {overflow: hidden;}
+nav img {transform: translate(-50%,-50%); position: relative; top: 50%; left: 50%; height: 25px;}
+nav p {display: none;}
+
+#navhide {display: block; background-image: linear-gradient(to right, #662D8C, #ED1E79);}
+
+.navdark {background-color: transparent;}
+.navdark div {background-color: #202124;}
+.hoverdark {background-color: #151517;}
+
+input {margin-left: -10px; margin-top: -10px; width: 40px; height: 40px; padding: 5px; border-radius: 50%;}
+}
+/*===============================| MOBILE |===============================*/
+
+/*====================| DETECÇÃO JAVASCRIPT DESATIVADO|====================*/
+
+.noscript {margin: 0px; color: white; position: absolute; top:50%; left: 50%; font-family: Helvetica, sans-serif, Arial; width: 90%; text-shadow: 2px 2px 3px black; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
+
+/*====================| DETECÇÃO JAVASCRIPT DESATIVADO|====================*/
+
+}
+
+</style>
+
+</head>
+<body>
+
+<noscript><style>#loader {display: none;} body {background-image: url("https://66.media.tumblr.com/e0d3a411dc9f5fabea302c1a32f30bb8/tumblr_nb0bdguL831tgzgaso1_400.gifv")}</style>
+<h1 class="noscript">..hmmm isso é um erro?<br>Talvez eu deva ativar o JavaScript..</h1></noscript>
+
+<div class="darker"></div>
+
+<nav>
+    <div id="logo_nav_desktop" onclick="logohide()" title="My Irreal World"><img src="./img/icon/logo.png"><p>My Irreal World</p></div>
+    <div id="navhide2" class="icon" title="Menu"><img src="./img/icon/menu_0.png"><p>Esconder</p></div>
+    <div id="entradas" class="faster" onclick="entradas()" title="Entradas"><img src="./img/icon/entry_1.png"><p>Entradas</p></div>
+    <div id="changelog" class="faster" onclick="changelog()" title="Changelog"><img src="./img/icon/changelog_0.png"><p>Changelog</p></div>
+    <div id="playlists" class="faster" onclick="playlists()" title="Playlists"><img src="./img/icon/music_0.png"><p>Playlists</p></div>
+    <div id="sobre" class="faster" onclick="sobre()" title="Sobre"><img src="./img/icon/info_0.png"><p>Sobre</p></div>
+    <div id="key" class="faster" onclick="key()" title="Palavra-passe"><img src="./img/icon/pass_0.png"><p>Palavra-passe</p></div>
+    <div id="wallpaper" class="faster" onclick="wallpaper()" title="Mudar Wallpaper"><img src="./img/icon/wall_0.png"><p>Trocar Wallapper</p></div>
+    <div id="darkmode" class="faster" onclick="darkmode()" title="Dark Mode"><img src="./img/icon/night_0.png"><p>Dark Mode</p></div>
+    <div id="color" class="faster" onclick="color()" title="Mudar cor de título"><input id="input-color" type='color'><img src="./img/icon/color_0.png"><p>Cor de Títulos</p></div>
+    <div id="navhide" class="icon" title="Menu"><img src="./img/icon/menu_0.png"></div>
+</nav>
+
+<img src="./img/icon/logo.png" class="logo_desktop" title="My Irreal World">
+
+<main>
+
+<!--<img src="https://i.imgur.com/rHzpfu0.png" class="logo_mobile" title="My Irreal World" onclick="logohide()">-->
+
+<section class="entradas">
+    <div>
+        <p>04 de Janeiro de 2020</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p><span class="glow_green">Quisque porta vestibulum orci a porta</span>.</p>
+    </div>
+    <div>
+        <p>03 de Janeiro de 2020</p>
+        <p>Pellentesque non quam nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi varius nibh a leo sollicitudin, vel luctus risus iaculis.</p>
+        <p>Nam hendrerit quam porttitor libero tristique auctor. Donec viverra interdum elit, in venenatis neque congue at. Donec eget consequat elit, vel pharetra erat.</p>
+    </div>
+    <div>
+        <p>02 de Janeiro de 2020</p>
+        <p>Phasellus dignissim imperdiet purus, et posuere nibh convallis id. Proin sit amet lectus diam</p>
+        <p><span class="glow_purple">sed sit amet sem id metus varius accumsan</span>.</p>
+    </div>
+    <div>
+        <p>01 de Janeiro de 2020</p>
+        <p>Quisque ac nulla quis nunc elementum ultricies. Suspendisse pulvinar in dolor id elementum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis sollicitudin ultrices dui tincidunt condimentum. Maecenas blandit sapien ut nunc viverra lacinia eget sed turpis. Donec metus ipsum, tempus elementum tortor sed, dignissim tincidunt felis. In mattis felis tincidunt convallis tincidunt. Curabitur ex ipsum, sodales in diam quis, pretium volutpat purus.</p>
+</div>
+</section>
+
+<section class="sobre">
+    <div class="about"><p>Sobre</p>
+        <p><b>Inspiração</b></p>
+        <p>EDEN<br>Archillect<br>Karma Fields</p>
+        <p><b>Código-aberto</b></p>
+        <p>w3schools<br>SoundCloud API</p>
+        <p><b>Programação & Design</b></p>
+        <p>Thiago Marinho Solfo</p>
+        <p><b>Fontes Utilizadas</b></p>
+        <p>Helvetica<br>Nexa Bold<br>Open Sans</p>
+    </div>   
+    <div>
+        <p>Contato</p>
+        <p>
+            <a href="https://twitter.com/ThiagoSolfo" class="fa fa-twitter" target="_blank"></a>
+            <a href="mailto:thiago.solfo@gmail.com" class="fa fa-envelope" target="_blank"></a>
+            <a href="https://api.whatsapp.com/send?phone=5547989051228" class="fa fa-whatsapp" target="_blank"></a>
+        </p>
+    </div>
+</section>
+
+<section class="playlists">
+    <div>
+        <p>Playlist Cities</p>
+        <p>"Todas as histórias terminam,<br>Mas a música vive para sempre."</p>
+        <iframe class="iframeplaylists" style="background-color: white" width="100%" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/689300148&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&buying=false&sharing=false&download=false&show_artwork=true&show_playcount=true"></iframe>
+    </div>
+    <div>
+        <p>Playlist Streets</p>
+        <p>"Não sei como estar tão perto de alguém tão distante."<br><br></p>
+        <iframe class="iframeplaylists" style="background-color: white" width="100%" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/697504602&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&buying=false&sharing=false&download=false&show_artwork=true&show_playcount=true"></iframe>
+    </div>
+</section>
+
+<section class="changelog">
+<!--=============================| DIVISÃO |=============================-->
+
+<div><p>0.0.3 | Lorem ipsum<span><br>03 de Janeiro de 2020 | 03:00</span></p>
+<p>• Lorem ipsum dolor sit amet
+• Lorem ipsum dolor sit amet
+
++ Lorem ipsum dolor sit amet
++ Lorem ipsum dolor sit amet
+
+- Lorem ipsum dolor sit amet
+</p></div>
+
+<!--=============================| DIVISÃO |=============================-->
+
+<div><p>0.0.2 | Lorem ipsum<span><br>02 de Janeiro de 2020 | 02:00</span></p>
+<p>• Lorem ipsum dolor sit amet
+• Lorem ipsum dolor sit amet
+
++ Lorem ipsum dolor sit amet
++ Lorem ipsum dolor sit amet
+
+- Lorem ipsum dolor sit amet
+</p></div>
+
+<!--=============================| DIVISÃO |=============================-->
+
+<div><p>0.0.1 | Lorem ipsum<span><br>01 de Janeiro de 2020 | 01:00</span></p>
+<p>• Lorem ipsum dolor sit amet
+• Lorem ipsum dolor sit amet
+
++ Lorem ipsum dolor sit amet
++ Lorem ipsum dolor sit amet
+
+- Lorem ipsum dolor sit amet
+</p></div>
+</section>
+
+</main>
+
+<script>
+
+$( document ).ready(function() {
+if ($.cookie("darkmode") == 1) {
+    darkmode();
+    $("section div p:first-child").css('background', $.cookie("darkcolor"));
+    $("section div").css({"background-color" : "#292a2d", "text-shadow" : "2px 2px 2px black"});
+} else {
+    $("section div p:first-child").css('background', $.cookie("color"));
+    $("section div").css({"background-color" : "white", "text-shadow" : ""});
+}
+});
+
+/*==========================| PRIMEIROS EVENTOS |==========================*/
+
+/*============================| TROCA DE COR |============================*/
+
+var cor = 0;;
+function color() {
+if (cor == 0) {
+    $("html, body").animate({scrollTop: 0}, "slow");
+    $("#color img").attr("src","https://i.imgur.com/dqiWL5X.png");
+    $('<div class="color"><p>Selecionar cor</p><div id="color-picker-container"></div></div>').prependTo(janela);
+    if ($.cookie("darkmode") == 1) {
+        var colorPicker = new iro.ColorPicker("#color-picker-container", {width: 320, color: $.cookie("darkcolor")});
+    } else {
+        var colorPicker = new iro.ColorPicker("#color-picker-container", {width: 320, color: $.cookie("color")});
+    }
+    
+    colorPicker.on('color:change', onColorChange);
+    function onColorChange(color, changes) {
+        $("section div p:first-child").css("background", color.hexString);
+        if ($.cookie("darkmode") == 1) {
+            $.cookie("darkcolor", color.hexString, { expires: 60 });
+        } else {
+            $.cookie("color", color.hexString, { expires: 60 });
+        }
+    }
+    darkmode(); darkmode();
+    cor = 1
+    } else {
+    $("#color img").attr("src","https://i.imgur.com/g1Vu3f3.png");
+    $(".color").remove();
+    cor = 0
+    }
+}
+
+$("#input-color").on("change", function() {
+$("section div p:first-child").css('background', $("#input-color").val());
+
+if ($.cookie("darkmode") == 1) {
+    $.cookie("darkcolor", $("#input-color").val(), { expires: 7 });
+    $("section div").css({"background-color" : "#292a2d", "text-shadow" : "2px 2px 2px black"});
+} else {
+    $.cookie("color", $("#input-color").val(), { expires: 7 });
+    $("section div").css({"background-color" : "white", "text-shadow" : ""});
+}
+
+});
+
+/*============================| TROCA DE COR |============================*/
+
+/*================================| LOGO |================================*/
+
+var janela = '.entradas'; // Correção para resumo de janelas quando o logo é pressionado
+
+function logohide() {
+    
+    if ($(".fim").is(":visible")) {
+            $(".fim").fadeOut(100);
+            $("#logo_nav_desktop").fadeTo(100, 0.2);
+        } else if ($(".fim").not(":visible")) {
+            $(".fim").fadeIn(100); $("#logo_nav_desktop").fadeTo(100, 1);
+        }
+    
+    if ($("section").is(":visible")) {
+        $("section, nav").fadeOut(100);
+        $(".logo_desktop").fadeTo(100, 0.2);
+    } else if ($("section").not(":visible")) {
+        $("#logo_nav_desktop").fadeTo(100, 1);
+        $("nav, " + janela).fadeIn(100);
+    }
+
+};
+
+$(".logo_desktop").click(function(){
+    $("nav, " + janela).fadeIn(100);
+    $(".logo_desktop").fadeOut(100);
+});
+
+/*================================| LOGO |================================*/
+
+/*==============================| DARK MODE |==============================*/
+
+var darkicon = 0;
+
+function darkmode() {
+    if (darkicon == 0) {
+        
+        darkicon = 1;
+        onealert = 1;
+        
+        $(".darker").show();
+        $("#darkmode img").attr("src","https://i.imgur.com/xWMkLDa.png");
+        $.cookie("darkmode", darkicon, { expires: 60 });
+        $("nav").addClass("navdark");
+        
+        if ($.cookie("darkcolor") == null) {
+            $("section div p:first-child").css("background-color", "#202124");
+        } else {
+            $("section div p:first-child").css('background', $.cookie("darkcolor"));
+        }
+        
+        $("section div").css({"background-color" : "#292a2d", "text-shadow" : "2px 2px 2px black"});
+        $("section div, .fa").css("color", "white");
+        $(".glow_purple").css("background-color", "#ae13ff52");
+        $(".glow_green").css("background-color", "#126700c2");
+        $('nav img').css('-webkit-filter', 'drop-shadow(3px 3px 1px black)');
+        
+    } else {
+        
+        darkicon = 0;
+        
+        $("section div p:first-child").css('background', $.cookie("color"));     
+        $(".darker").hide();
+        $.cookie("darkmode", darkicon, { expires: 60 });
+        
+        if ($.cookie("color") == null) {
+            $("section div p:first-child").css("background-color", "#23004c");
+        } else {
+            $("section div p:first-child").css('background', $.cookie("color"));
+            $("section div").css({"background-color" : "white", "text-shadow" : ""});
+        }
+        
+        $("nav").removeClass("navdark")
+        $("section div").css({"background-color" : "white", "text-shadow" : ""});
+        $("section div, .fa").css("color", "black");
+        $(".glow_purple").css("background-color", "#f1d6ff");
+        $(".glow_green").css("background-color", "#c4ffb8");
+        $("section div img").css("filter", "");
+        $('nav img').css('-webkit-filter', '');
+    }
+};
+
+/*==============================| DARK MODE |==============================*/
+
+/*==============================| RANDOM BG |==============================*/
+
+var bgurl = '';
+
+function wallpaper() {
+var randbg = ["CtRxqC9", "TuNBngN", "epV9Ucl", "YDJCnsJ", "XD50Bqn", "qIgJSpN", "8hGytSZ", "OGEddAv", "LCTUOlE", "boGMQ0L", "DRLGbvR", "qlmkRAm", "rLsHCoR", "Q4D9Llx", "ZDsu8gW", "R0F9vid", "x4Yeutt", "7TrRR4u", "PuMRBof"];
+var rand = Math.floor((Math.random() * randbg.length)); // Conta o número de arrays
+var rand2 = Math.floor((Math.random() * 100)); // Porcentagem até 100%
+$('body').css('background-image', 'radial-gradient(transparent, black 250%), url("https://i.imgur.com/' + randbg[rand] + '.jpg")');
+$('body').css('background-position', rand2 + '%');
+bgurl = 'https://i.imgur.com/' + randbg[rand] + '.jpg';
+};
+
+wallpaper();
+
+/*==============================| RANDOM BG |==============================*/
+
+function reset() {
+    $('section').hide();
+    $("#entradas img").attr("src","https://i.imgur.com/Bpj1Cyd.png");
+    $("#sobre img").attr("src","https://i.imgur.com/Vl8wTZz.png");
+    $("#playlists img").attr("src","https://i.imgur.com/0GjpFpz.png");
+    $("#ask img").attr("src","https://i.imgur.com/tWSaRZ9.png");
+    $("#changelog img").attr("src","https://i.imgur.com/XNHpbDx.png");
+    $("#wallpaper img").attr("src","https://i.imgur.com/LGip4Dl.png");
+    $("#key img").attr("src","https://i.imgur.com/PGyfnKK.png");
+    $("#tumblr img").attr("src","https://i.imgur.com/LqmgGMY.png");
+};
+
+$("#navhide2").click(function(){
+    if (navhide2 == 1) {
+        $("nav p").hide();
+        $("main").css("margin-left", $("nav div").innerWidth()); // Detecta o tamanho da nav
+        $("#navhide2 img").attr("src","https://i.imgur.com/jEumU4r.png");
+        navhide2 = 0
+    } else {
+        $("nav p").show();
+        $("main").css("margin-left", $("nav div").innerWidth()); // Detecta o tamanho da nav
+        $("#navhide2 img").attr("src","https://i.imgur.com/ccaNVVL.png");
+        navhide2 = 1
+    }
+});
+
+$("#navhide").click(function(){
+    function animateCSS(element, animationName, callback) {
+    const node = document.querySelector(element)
+    node.classList.add('animated', animationName)
+    function handleAnimationEnd() {
+        node.classList.remove('animated', animationName)
+        node.removeEventListener('animationend', handleAnimationEnd)
+        if (typeof callback === 'function') callback()
+        }
+    node.addEventListener('animationend', handleAnimationEnd)
+    }
+    
+    if (navhide == 0){
+    var j = $('nav div').length - 2; // Conta quantas navegações tem menos o dois primeiros
+    function repeat2() {
+        if (j > 1) { // Esconder todas as navegações menos a primeira
+            animateCSS('nav div:nth-last-child('+j+')', 'fadeOut', function() {
+                $('nav div:nth-last-child('+j+')').hide();
+                j--;
+                repeat2();
+            });
+        }
+    }
+    repeat2();
+        $("#navhide img").attr("src","https://i.imgur.com/jEumU4r.png");
+        navhide = 1;
+    } else {
+    var i = 2;
+    function repeat() {
+        if (i <= $('nav div').length - 2) {
+            $('nav div:nth-last-child('+i+')').show();
+            animateCSS('nav div:nth-last-child('+i+')', 'fadeInUp', function() {
+                i++;
+                repeat();            
+            });
+        }
+    }
+    repeat();
+        $("nav div:last-child").css("margin-top", "10px");
+        $("#navhide img").attr("src","https://i.imgur.com/ccaNVVL.png");
+        navhide = 0;
+    }
+});
+
+function entradas() {
+    reset();
+    $("#entradas img").attr("src","https://i.imgur.com/XPrh3xV.png");
+    $('.entradas').show();
+    deteconce = 0;
+    janela = '.entradas';
+    $.cookie("resume", "entradas", { expires: 30 });
+}
+
+function sobre() {
+    reset();
+    $("#sobre img").attr("src","https://i.imgur.com/XqVSj3S.png");
+    $('.sobre').show();
+    $.cookie("resume", "sobre", { expires: 30 });
+    $(document).attr("title", "Sobre | My Irreal World");
+    janela = '.sobre';
+}
+
+function changelog() {
+    reset();
+    $("#changelog img").attr("src","https://i.imgur.com/QkrH6Ki.png");
+    $('.changelog').show();
+    $(document).attr("title", "Changelog | My Irreal World");
+    janela = '.changelog';
+    $.cookie("resume", "changelog", { expires: 30 });
+}
+
+function playlists() {
+    reset();
+    $("#playlists img").attr("src","https://i.imgur.com/YHyPBsM.png");
+    $('.playlists').show();
+    $(document).attr("title", "Playlists | My Irreal World");
+    janela = '.playlists';
+    $.cookie("resume", "playlists", { expires: 30 });
+}
+
+function ask() {
+    reset();
+    $("#ask img").attr("src","https://i.imgur.com/sn3Ljyf.png");
+    $('.ask').show();
+    $(document).attr("title", "Pergunte Algo | My Irreal World");
+    janela = '.ask';
+    $.cookie("resume", "sbore", { expires: 30 });
+}
+
+function tumblr() {
+    reset();
+    $("#tumblr img").attr("src","https://i.imgur.com/TTZ2fWq.png");
+    $('.tumblr').show();
+    $(document).attr("title", "Tumblr | My Irreal World");
+    janela = '.tumblr';
+    $.cookie("resume", ".tumblr", { expires: 30 });
+}
+
+/*===============================| SENHAS |===============================*/
+
+// Variável requerida para cada chave. Faz com que somente seja inserida uma única vez, prevenindo a repetição
+var exemplo_senha = 0;
+
+function key() {
+
+var senha = prompt("Entre com a palavra-passe:", "");
+
+switch(senha.toLowerCase()) {
+      
+case "clear":
+        c = confirm("Redefinir preferências?");
+        if (c == true) {
+            $.removeCookie("darkmode");
+            $.removeCookie("color");
+            $.removeCookie("darkcolor");
+            darkmode(); darkmode();
+        } else {
+            alert("Redefinição cancelada.");
+        }
+      break;
+  
+default:
+    if(senha == 0) {alert("Por favor, digite uma palavra-passe.]"); key();} else if (senha == null) {} else {alert('Palavra-passe Inválida.'); key();};
+      break;
+  }
+};
+
+/*===============================| SENHAS |===============================*/
+
+</script>
+</body>
+</html>
