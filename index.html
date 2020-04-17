@@ -468,26 +468,24 @@ wallpaper();
 
 function reset() {
     $('section').hide();
-    $("#entradas img").attr("src","https://i.imgur.com/Bpj1Cyd.png");
-    $("#sobre img").attr("src","https://i.imgur.com/Vl8wTZz.png");
-    $("#playlists img").attr("src","https://i.imgur.com/0GjpFpz.png");
-    $("#ask img").attr("src","https://i.imgur.com/tWSaRZ9.png");
-    $("#changelog img").attr("src","https://i.imgur.com/XNHpbDx.png");
-    $("#wallpaper img").attr("src","https://i.imgur.com/LGip4Dl.png");
-    $("#key img").attr("src","https://i.imgur.com/PGyfnKK.png");
-    $("#tumblr img").attr("src","https://i.imgur.com/LqmgGMY.png");
+    $("#entradas img").attr("src","img/icon/entry_0.png");
+    $("#sobre img").attr("src","img/icon/info_0.png");
+    $("#playlists img").attr("src","img/icon/music_0.png");
+    $("#changelog img").attr("src","img/icon/changelog_0.png");
+    $("#wallpaper img").attr("src","img/icon/wall_0.png");
+    $("#key img").attr("src","img/icon/pass_0.png");
 };
 
 $("#navhide2").click(function(){
     if (navhide2 == 1) {
         $("nav p").hide();
         $("main").css("margin-left", $("nav div").innerWidth()); // Detecta o tamanho da nav
-        $("#navhide2 img").attr("src","https://i.imgur.com/jEumU4r.png");
+        $("#navhide2 img").attr("src","img/icon/menu_0.png");
         navhide2 = 0
     } else {
         $("nav p").show();
         $("main").css("margin-left", $("nav div").innerWidth()); // Detecta o tamanho da nav
-        $("#navhide2 img").attr("src","https://i.imgur.com/ccaNVVL.png");
+        $("#navhide2 img").attr("src","img/icon/menu_1.png");
         navhide2 = 1
     }
 });
@@ -516,7 +514,7 @@ $("#navhide").click(function(){
         }
     }
     repeat2();
-        $("#navhide img").attr("src","https://i.imgur.com/jEumU4r.png");
+        $("#navhide img").attr("src","img/icon/menu_0.png");
         navhide = 1;
     } else {
     var i = 2;
@@ -531,14 +529,14 @@ $("#navhide").click(function(){
     }
     repeat();
         $("nav div:last-child").css("margin-top", "10px");
-        $("#navhide img").attr("src","https://i.imgur.com/ccaNVVL.png");
+        $("#navhide img").attr("src","img/icon/menu_1.png");
         navhide = 0;
     }
 });
 
 function entradas() {
     reset();
-    $("#entradas img").attr("src","https://i.imgur.com/XPrh3xV.png");
+    $("#entradas img").attr("src","img/icon/entry_1.png");
     $('.entradas').show();
     deteconce = 0;
     janela = '.entradas';
@@ -547,7 +545,7 @@ function entradas() {
 
 function sobre() {
     reset();
-    $("#sobre img").attr("src","https://i.imgur.com/XqVSj3S.png");
+    $("#sobre img").attr("src","img/icon/info_1.png");
     $('.sobre').show();
     $.cookie("resume", "sobre", { expires: 30 });
     $(document).attr("title", "Sobre | My Irreal World");
@@ -556,7 +554,7 @@ function sobre() {
 
 function changelog() {
     reset();
-    $("#changelog img").attr("src","https://i.imgur.com/QkrH6Ki.png");
+    $("#changelog img").attr("src","img/icon/changelog_1.png");
     $('.changelog').show();
     $(document).attr("title", "Changelog | My Irreal World");
     janela = '.changelog';
@@ -565,29 +563,11 @@ function changelog() {
 
 function playlists() {
     reset();
-    $("#playlists img").attr("src","https://i.imgur.com/YHyPBsM.png");
+    $("#playlists img").attr("src","img/icon/music_1.png");
     $('.playlists').show();
     $(document).attr("title", "Playlists | My Irreal World");
     janela = '.playlists';
     $.cookie("resume", "playlists", { expires: 30 });
-}
-
-function ask() {
-    reset();
-    $("#ask img").attr("src","https://i.imgur.com/sn3Ljyf.png");
-    $('.ask').show();
-    $(document).attr("title", "Pergunte Algo | My Irreal World");
-    janela = '.ask';
-    $.cookie("resume", "sbore", { expires: 30 });
-}
-
-function tumblr() {
-    reset();
-    $("#tumblr img").attr("src","https://i.imgur.com/TTZ2fWq.png");
-    $('.tumblr').show();
-    $(document).attr("title", "Tumblr | My Irreal World");
-    janela = '.tumblr';
-    $.cookie("resume", ".tumblr", { expires: 30 });
 }
 
 /*===============================| SENHAS |===============================*/
