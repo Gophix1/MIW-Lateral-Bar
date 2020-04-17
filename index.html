@@ -322,11 +322,11 @@ function color() {
 if (cor == 0) {
     $("html, body").animate({scrollTop: 0}, "slow");
     $("#color img").attr("src","img/icon/color_1.png");
-    $('<div class="color"><p>Selecionar cor</p><div id="color-picker-container"></div></div>').prependTo(janela);
+    $('<div class="color"><p>Selecionar cor</p><div id="color-picker-container" style="padding: 10px; transform: translateX(-50%); position: relative; left: 50%; display: inline-block;"></div></div>').prependTo(janela);
     if ($.cookie("darkmode") == 1) {
-        var colorPicker = new iro.ColorPicker("#color-picker-container", {width: 320, color: $.cookie("darkcolor")});
+        var colorPicker = new iro.ColorPicker("#color-picker-container", {width: 240, color: $.cookie("darkcolor")});
     } else {
-        var colorPicker = new iro.ColorPicker("#color-picker-container", {width: 320, color: $.cookie("color")});
+        var colorPicker = new iro.ColorPicker("#color-picker-container", {width: 240, color: $.cookie("color")});
     }
     
     colorPicker.on('color:change', onColorChange);
