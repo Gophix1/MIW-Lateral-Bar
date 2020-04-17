@@ -1,6 +1,6 @@
-@font-face {font-family: 'Roboto'; src: url('font/Roboto-Regular.ttf');}
-@font-face {font-family: 'Open Sans'; src: url('font/OpenSans-Regular.ttf');}
-@font-face {font-family: 'Nexa Bold'; src: url('font/Nexa-Bold.otf');}
+@font-face {font-family: 'Roboto'; src: url('../font/Roboto-Regular.ttf');}
+@font-face {font-family: 'Open Sans'; src: url('../font/OpenSans-Regular.ttf');}
+@font-face {font-family: 'Nexa Bold'; src: url('../font/Nexa-Bold.otf');}
 
 ::-webkit-scrollbar {width: 4px; height: 3px;}
 ::-webkit-scrollbar-track {background: #f1f1f1;}
