@@ -4,10 +4,8 @@ $(function() {
 	if ($.cookie("darkmode") == 1) {
 		darkmode();
 		$("section div p:first-child").css('background', $.cookie("darkcolor"));
-		$("section div").css({"background" : "#292a2d", "text-shadow" : "2px 2px 2px black"});
 	} else {
 		$("section div p:first-child").css('background', $.cookie("color"));
-		$("section div").css({"background" : "white", "text-shadow" : ""});
 	}
 });
 
@@ -15,12 +13,12 @@ $(function() {
 
 /*============================| TROCA DE COR |============================*/
 
-var cor = 0;;
+var cor = 0;
 function color() {
 if (cor == 0) {
     $("html, body").animate({scrollTop: 0}, "slow");
     $("#color img").attr("src","img/icon/color_1.png");
-    $('<div class="color" style="text-align: initial;"><p>Selecionar cor</p><div id="color-picker-container" style="padding: 10px; transform: translateX(-50%); position: relative; left: 50%; display: inline-block;"></div></div>').prependTo('section:visible');
+    $('<div class="color" style="text-align: center;"><p>Selecionar cor</p><div id="color-picker-container" style="padding: 10px; display: inline-block;"></div></div>').prependTo('section:visible');
     if ($.cookie("darkmode") == 1) {
         var colorPicker = new iro.ColorPicker("#color-picker-container", {width: 240, color: $.cookie("darkcolor")});
     } else {
@@ -94,7 +92,7 @@ function darkmode() {
         }
         $("nav").css("background", "#202124");
         $(".icon img").css('-webkit-filter', 'drop-shadow(2px 2px 2px white) invert(1)');
-        $("section div").css({"background" : "#292a2d", "text-shadow" : "2px 2px 2px black", "color" : "white"});
+        $("section div, .color *").css({"background" : "#292a2d", "text-shadow" : "2px 2px 2px black", "color" : "white"});
         $(".fa").css("color", "white");
         $(".glow_purple").css("background", "#ae13ff52");
         $(".glow_green").css("background", "#126700c2");
@@ -107,13 +105,15 @@ function darkmode() {
         $("section div p:first-child").css('background', $.cookie("color"));     
         $("#darkmode img").attr("src","img/icon/night_0.png");
         $.cookie("darkmode", darkicon, { expires: 60 });
-        $("section *, nav, .darker").removeAttr("style");
+        $("section *:not(.color, .color *), nav, .darker").removeAttr("style");
+		$(".color, .color *").css('background', 'white');
         
         if ($.cookie("color") == null) {
             $("section div p:first-child").css("background", "#23004c");
         } else {
             $("section div p:first-child").css('background', $.cookie("color"));
-            $("section *").removeAttr("style");
+            $("section *:not(.color, .color *)").removeAttr("style");
+			$(".color, .color *").css('background', 'white');
         }
     }
 };
