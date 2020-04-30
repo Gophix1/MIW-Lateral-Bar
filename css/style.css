@@ -24,8 +24,7 @@ body {background-repeat: no-repeat; background-attachment: fixed; background-siz
 
 .iro__colorPicker {margin: auto; padding: 10px;}
 
-.icon {margin: 0px 20px;}
-.icon svg {height: 15px;}
+.icon img {height: 15px; margin: 0px 20px;}
 
 /*=========================| DESATIVAÇÃO E REMOÇÃO |========================*/
 
