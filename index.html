@@ -87,11 +87,11 @@
 <section class="playlists">
     <div>
         <p>Playlist Cities</p>
-        <iframe class="iframeplaylists" style="background-color: white" width="100%" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/689300148&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&buying=false&sharing=false&download=false&show_artwork=true&show_playcount=true"></iframe>
+        <iframe class="iframeplaylists" style="background: white" width="100%" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/689300148&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&buying=false&sharing=false&download=false&show_artwork=true&show_playcount=true"></iframe>
     </div>
     <div>
         <p>Playlist Streets</p>
-        <iframe class="iframeplaylists" style="background-color: white" width="100%" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/697504602&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&buying=false&sharing=false&download=false&show_artwork=true&show_playcount=true"></iframe>
+        <iframe class="iframeplaylists" style="background: white" width="100%" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/697504602&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&buying=false&sharing=false&download=false&show_artwork=true&show_playcount=true"></iframe>
     </div>
 </section>
 
@@ -141,10 +141,10 @@ $( document ).ready(function() {
 if ($.cookie("darkmode") == 1) {
     darkmode();
     $("section div p:first-child").css('background', $.cookie("darkcolor"));
-    $("section div").css({"background-color" : "#292a2d", "text-shadow" : "2px 2px 2px black"});
+    $("section div").css({"background" : "#292a2d", "text-shadow" : "2px 2px 2px black"});
 } else {
     $("section div p:first-child").css('background', $.cookie("color"));
-    $("section div").css({"background-color" : "white", "text-shadow" : ""});
+    $("section div").css({"background" : "white", "text-shadow" : ""});
 }
 });
 
@@ -187,10 +187,10 @@ $("section div p:first-child").css('background', $("#input-color").val());
 
 if ($.cookie("darkmode") == 1) {
     $.cookie("darkcolor", $("#input-color").val(), { expires: 7 });
-    $("section div").css({"background-color" : "#292a2d", "text-shadow" : "2px 2px 2px black"});
+    $("section div").css({"background" : "#292a2d", "text-shadow" : "2px 2px 2px black"});
 } else {
     $.cookie("color", $("#input-color").val(), { expires: 7 });
-    $("section div").css({"background-color" : "white", "text-shadow" : ""});
+    $("section div").css({"background" : "white", "text-shadow" : ""});
 }
 
 });
@@ -202,14 +202,6 @@ if ($.cookie("darkmode") == 1) {
 var janela = '.entradas'; // Correção para resumo de janelas quando o logo é pressionado
 
 function logohide() {
-    
-    if ($(".fim").is(":visible")) {
-            $(".fim").fadeOut(100);
-            $("#logo_nav_desktop").fadeTo(100, 0.2);
-        } else if ($(".fim").not(":visible")) {
-            $(".fim").fadeIn(100); $("#logo_nav_desktop").fadeTo(100, 1);
-        }
-    
     if ($("section").is(":visible")) {
         $("section, nav").fadeOut(100);
         $(".logo_desktop").fadeTo(100, 0.2);
@@ -217,7 +209,6 @@ function logohide() {
         $("#logo_nav_desktop").fadeTo(100, 1);
         $("nav, " + janela).fadeIn(100);
     }
-
 };
 
 $(".logo_desktop").click(function(){
@@ -240,19 +231,18 @@ function darkmode() {
         $(".darker").show();
         $("#darkmode img").attr("src","img/icon/night_1.png");
         $.cookie("darkmode", darkicon, { expires: 60 });
-        $("nav").addClass("navdark");
         
         if ($.cookie("darkcolor") == null) {
-            $("section div p:first-child").css("background-color", "#202124");
+            $("section div p:first-child").css("background", "#202124");
         } else {
             $("section div p:first-child").css('background', $.cookie("darkcolor"));
         }
-        
+        $("nav").css("background", "#202124");
         $(".icon svg").css("filter", "invert(1)");
-        $("section div").css({"background-color" : "#292a2d", "text-shadow" : "2px 2px 2px black"});
-        $("section div, .fa").css("color", "white");
-        $(".glow_purple").css("background-color", "#ae13ff52");
-        $(".glow_green").css("background-color", "#126700c2");
+        $("section div").css({"background" : "#292a2d", "text-shadow" : "2px 2px 2px black", "color" : "white"});
+        $(".fa").css("color", "white");
+        $(".glow_purple").css("background", "#ae13ff52");
+        $(".glow_green").css("background", "#126700c2");
         $('nav img').css('-webkit-filter', 'drop-shadow(3px 3px 1px black)');
         
     } else {
@@ -265,20 +255,12 @@ function darkmode() {
         $.cookie("darkmode", darkicon, { expires: 60 });
         
         if ($.cookie("color") == null) {
-            $("section div p:first-child").css("background-color", "#23004c");
+            $("section div p:first-child").css("background", "#23004c");
         } else {
             $("section div p:first-child").css('background', $.cookie("color"));
-            $("section div").css({"background-color" : "white", "text-shadow" : ""});
+            $("section *").removeAttr("style");
         }
-        
-        $(".icon svg").css("filter", "");
-        $("nav").removeClass("navdark")
-        $("section div").css({"background-color" : "white", "text-shadow" : ""});
-        $("section div, .fa").css("color", "black");
-        $(".glow_purple").css("background-color", "#f1d6ff");
-        $(".glow_green").css("background-color", "#c4ffb8");
-        $("section div img").css("filter", "");
-        $('nav img').css('-webkit-filter', '');
+        $("section *, nav").removeAttr("style");
     }
 };
 
