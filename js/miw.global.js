@@ -132,7 +132,6 @@ $('body').css({"background-image" : 'radial-gradient(transparent, black 250%), u
 
 $(function() {
     $("#navhide").click(function(){
-	alert("oi");
     function animateCSS(element, animationName, callback) {
     const node = document.querySelector(element)
     node.classList.add('animated', animationName)
