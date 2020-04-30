@@ -7,11 +7,11 @@
 ::-webkit-scrollbar-thumb {background: #888;}
 ::-webkit-scrollbar-thumb:hover {background: #555;}
 
-* {box-sizing: border-box;}
-html {scroll-behavior: smooth; -webkit-tap-highlight-color: transparent;}
-body {background-repeat: no-repeat; background-attachment: fixed; background-size: cover; margin: 0; font-family: roboto; height: 100%; background: black;}
+* {box-sizing: border-box; -webkit-tap-highlight-color: transparent;}
 
-.darker {width: 100%; height: 100%; background: #0000005c; position: fixed; top: 0px; left: 0px; z-index: -1;}
+body {background-repeat: no-repeat; background-attachment: fixed; background-size: cover; margin: 0; font-family: roboto; height: 100%; background-color: black;}
+
+.darker {width: 100%; height: 100%; background: #0000005c; position: fixed; z-index: -1; display: none;}
 
 .glow_green {background: #c4ffb8;}
 .glow_purple {background: #f1d6ff;}
@@ -22,8 +22,6 @@ body {background-repeat: no-repeat; background-attachment: fixed; background-siz
 
 .center {text-align: center;}
 
-hr {width: 7px; height: 7px; background: black; border:none; margin: 10px auto; border-radius: 50%;}
-
 .iro__colorPicker {margin: auto; padding: 10px;}
 
 .icon {margin: 0px 20px;}
@@ -31,7 +29,7 @@ hr {width: 7px; height: 7px; background: black; border:none; margin: 10px auto; 
 
 /*=========================| DESATIVAÇÃO E REMOÇÃO |========================*/
 
-nav, nav img {-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-touch-callout: none;}
+nav, nav img, changelog div {-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-touch-callout: none;}
 
 body::-webkit-scrollbar, input, .changelog span, #navhide, nav p, .sobre, .changelog, .playlists, .logo_desktop, .logo_mobile {display: none;}
 
@@ -49,7 +47,7 @@ section div p:not(:first-child) {padding: 10px;}
 section div p:last-child {margin-bottom: 0px;}
 
 .entradas {text-align: justify;}
-.sobre, .changelog, .playlists, .darkmode, .key {text-align: center;}
+.sobre, .changelog, .playlists .key {text-align: center;}
 
 .changelog p:not(:first-child), .entradas p:not(:first-child) {white-space: pre-line;}
 
@@ -62,8 +60,8 @@ section div p:last-child {margin-bottom: 0px;}
 
 /*Animação rápida para ícones mobile*/
 .animated.faster {
-  -webkit-animation-duration: 300ms;
-  animation-duration: 300ms;
+	-webkit-animation-duration: 300ms;
+	animation-duration: 300ms;
 }
 
 #logo_nav_desktop img {width: 36px;}
@@ -98,57 +96,55 @@ ul {list-style-type: none; display: flex; flex-wrap: wrap; justify-content: spac
 /*==============================| TRADUCAO |==============================*/
 
 @media (max-width: 1500px) {
-section {grid-template-columns: auto auto auto;}
+	section {grid-template-columns: auto auto auto;}
 }
 
 @media (max-width: 1100px) {
-section {grid-template-columns: auto auto;}
+	section {grid-template-columns: auto auto;}
 }
 @media (min-width: 800px) {
-.sobre, .ask {margin: auto; width: 60%;}
+	.sobre {margin: auto; width: 60%;}
 }
 
 @media (max-width: 800px) {
-.logo_mobile {display: block; width: 50px; margin: auto; padding-top: 15px;  -webkit-filter: drop-shadow(2px 2px 1px black);}
-
-section, .playlists {grid-template-columns: auto;}
+	.logo_mobile {display: block; width: 50px; margin: auto; padding-top: 15px;  -webkit-filter: drop-shadow(2px 2px 1px black);}
+	
+	section, .playlists {grid-template-columns: auto;}
 }
 
 /*===============================| MOBILE |===============================*/
 
 @media (max-width: 500px) {
-::-webkit-scrollbar, #logo_nav_desktop, #wallpaper, #key, #darkmode, #playlists, #changelog, #sobre, #entradas, #navhide2, #color {display: none;}
+	::-webkit-scrollbar, #logo_nav_desktop, #wallpaper, #key, #darkmode, #playlists, #changelog, #sobre, #entradas, #navhide2, #color {display: none;}
+	
+	.sobre {width: auto; margin: 0px;}
+	
+	.logo_mobile {display: block; width: 50px; margin: auto; padding-top: 15px;  -webkit-filter: drop-shadow(2px 2px 1px black);}
+	
+	main {margin-left: 0px;}
+	
+	section {grid-template-columns: auto; grid-row-gap: 15px;}
+	
+	.playlists {grid-template-columns: auto;}
+    
+	p {font-size: 14px;}
+    
+	nav {right: 10px; margin: 0px; z-index: 2; color: white; bottom: 10px; height: auto; width: auto; background: transparent;}
+	nav div {height: 40px; width: 40px; background: black; border-radius: 50%; margin-top: 10px; display: block; box-shadow: 2px 2px 3px black;}
+	nav div:first-child, nav div:last-child {margin-top: 0px;}
+	nav div, nav {overflow: hidden;}
+	nav img {transform: translate(-50%,-50%); position: relative; top: 50%; left: 50%; height: 25px;}
+	nav p {display: none;}
 
-.sobre {width: auto; margin: 0px;}
-
-.logo_mobile {display: block; width: 50px; margin: auto; padding-top: 15px;  -webkit-filter: drop-shadow(2px 2px 1px black);}
-
-main {margin-left: 0px;}
-section {grid-template-columns: auto; grid-row-gap: 15px;}
-.playlists {grid-template-columns: auto;}
-
-p {font-size: 14px;}
-
-nav {right: 10px; margin: 0px; z-index: 2; color: white; bottom: 10px; height: auto; width: auto; background: transparent;}
-nav div {height: 40px; width: 40px; background: black; border-radius: 50%; margin-top: 10px; display: block; box-shadow: 2px 2px 3px black;}
-nav div:first-child, nav div:last-child {margin-top: 0px;}
-nav div, nav {overflow: hidden;}
-nav img {transform: translate(-50%,-50%); position: relative; top: 50%; left: 50%; height: 25px;}
-nav p {display: none;}
-
-#navhide {display: block; background-image: linear-gradient(to right, #662D8C, #ED1E79);}
-
-.navdark {background: transparent;}
-.navdark div {background: #202124;}
-.hoverdark {background: #151517;}
-
-input {margin-left: -10px; margin-top: -10px; width: 40px; height: 40px; padding: 5px; border-radius: 50%;}
+	#navhide {display: block; background-image: linear-gradient(to right, #662D8C, #ED1E79);}
+	
+    input {margin-left: -10px; margin-top: -10px; width: 40px; height: 40px; padding: 5px; border-radius: 50%;}
 }
 /*===============================| MOBILE |===============================*/
 
 /*====================| DETECÇÃO JAVASCRIPT DESATIVADO|====================*/
 
-.noscript {margin: 0px; color: white; position: absolute; top:50%; left: 50%; font-family: Arial; width: 90%; text-shadow: 2px 2px 3px black; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
+.noscript {margin: 0px; color: white; position: absolute; top:50%; left: 50%; font-family: Arial; width: 90%; text-shadow: 2px 2px 3px black; transform: translate(-50%, -50%);}
 
 /*====================| DETECÇÃO JAVASCRIPT DESATIVADO|====================*/
 
