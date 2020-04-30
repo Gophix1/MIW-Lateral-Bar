@@ -67,7 +67,7 @@ function logohide() {
         $("nav, main").fadeOut(100);
         $(".logo_fix").fadeTo(100, 0.2);
     } else {
-        $("nav, main").fadeIn(100);
+		$("nav, main").fadeIn(100);
 		$(".logo_fix").fadeOut(100);
     }
 };
