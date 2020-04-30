@@ -71,10 +71,11 @@ function logohide() {
         $("nav, " + janela).fadeIn(100);
     }
 };
-
-$(".logo_desktop").click(function(){
-    $("nav, " + janela).fadeIn(100);
-    $(".logo_desktop").fadeOut(100);
+$(function() {
+	$(".logo_desktop").click(function(){
+		$("nav, " + janela).fadeIn(100);
+		$(".logo_desktop").fadeOut(100);
+	});
 });
 
 /*================================| LOGO |================================*/
