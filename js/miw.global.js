@@ -1,4 +1,3 @@
-
 $(function() {
 	if ($.cookie("darkmode") == 1) {
 		darkmode();
@@ -99,7 +98,7 @@ function darkmode() {
             $("section div p:first-child").css('background', $.cookie("darkcolor"));
         }
         $("nav").css("background", "#202124");
-        $(".icon svg").css("filter", "invert(1)");
+        $(".icon img").css('-webkit-filter', 'drop-shadow(2px 2px 2px white) invert(1)');
         $("section div").css({"background" : "#292a2d", "text-shadow" : "2px 2px 2px black", "color" : "white"});
         $(".fa").css("color", "white");
         $(".glow_purple").css("background", "#ae13ff52");
@@ -305,7 +304,7 @@ var exemplo_senha = 0;
 
 function key() {
 
-var senha = prompt("Entre com a senha:", "");
+var senha = prompt("Digite a senha:", "");
 
 switch(senha.toLowerCase()) {
       
