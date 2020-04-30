@@ -1,3 +1,5 @@
+/*==========================| PRIMEIROS EVENTOS |==========================*/
+
 $(function() {
 	if ($.cookie("darkmode") == 1) {
 		darkmode();
@@ -18,7 +20,7 @@ function color() {
 if (cor == 0) {
     $("html, body").animate({scrollTop: 0}, "slow");
     $("#color img").attr("src","img/icon/color_1.png");
-    $('<div class="color" style="text-align: initial;"><p>Selecionar cor</p><div id="color-picker-container" style="padding: 10px; transform: translateX(-50%); position: relative; left: 50%; display: inline-block;"></div></div>').prependTo(janela);
+    $('<div class="color" style="text-align: initial;"><p>Selecionar cor</p><div id="color-picker-container" style="padding: 10px; transform: translateX(-50%); position: relative; left: 50%; display: inline-block;"></div></div>').prependTo('section:visible');
     if ($.cookie("darkmode") == 1) {
         var colorPicker = new iro.ColorPicker("#color-picker-container", {width: 240, color: $.cookie("darkcolor")});
     } else {
@@ -60,23 +62,15 @@ if ($.cookie("darkmode") == 1) {
 
 /*================================| LOGO |================================*/
 
-var janela = '.entradas'; // Correção para resumo de janelas quando o logo é pressionado
-
 function logohide() {
-    if ($("section").is(":visible")) {
-        $("section, nav").fadeOut(100);
-        $(".logo_desktop").fadeTo(100, 0.2);
-    } else if ($("section").not(":visible")) {
-        $("#logo_nav_desktop").fadeTo(100, 1);
-        $("nav, " + janela).fadeIn(100);
+    if ($("nav").is(":visible")) {
+        $("nav, main").fadeOut(100);
+        $(".logo_fix").fadeTo(100, 0.2);
+    } else {
+        $("nav, main").fadeIn(100);
+		$(".logo_fix").fadeOut(100);
     }
 };
-$(function() {
-	$(".logo_desktop").click(function(){
-		$("nav, " + janela).fadeIn(100);
-		$(".logo_desktop").fadeOut(100);
-	});
-});
 
 /*================================| LOGO |================================*/
 
@@ -198,7 +192,6 @@ $("#navhide2").click(function(){
 });
 
 $("#navhide").click(function(){
-	alert("oi");
     function animateCSS(element, animationName, callback) {
     const node = document.querySelector(element)
     node.classList.add('animated', animationName)
@@ -270,8 +263,6 @@ function entradas() {
     reset();
     $("#entradas img").attr("src","img/icon/entry_1.png");
     $('.entradas').show();
-    deteconce = 0;
-    janela = '.entradas';
 }
 
 function sobre() {
@@ -279,7 +270,6 @@ function sobre() {
     $("#sobre img").attr("src","img/icon/info_1.png");
     $('.sobre').show();
     $(document).attr("title", "Sobre | My Irreal World");
-    janela = '.sobre';
 }
 
 function changelog() {
@@ -287,7 +277,6 @@ function changelog() {
     $("#changelog img").attr("src","img/icon/changelog_1.png");
     $('.changelog').show();
     $(document).attr("title", "Changelog | My Irreal World");
-    janela = '.changelog';
 }
 
 function playlists() {
@@ -295,7 +284,6 @@ function playlists() {
     $("#playlists img").attr("src","img/icon/music_1.png");
     $('.playlists').show();
     $(document).attr("title", "Playlists | My Irreal World");
-    janela = '.playlists';
 }
 
 /*===============================| SENHAS |===============================*/
