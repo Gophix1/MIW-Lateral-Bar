@@ -30,7 +30,7 @@ body {background-repeat: no-repeat; background-attachment: fixed; background-siz
 
 nav, nav img, .changelog div {-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-touch-callout: none;}
 
-body::-webkit-scrollbar, input, .changelog span, #navhide, nav p, .sobre, .changelog, .playlists, .logo_desktop, .logo_mobile {display: none;}
+body::-webkit-scrollbar, input, .changelog span, #show_mobile, nav p, .sobre, .changelog, .playlists, .logo_desktop, .logo_mobile {display: none;}
 
 /*=========================| DESATIVAÇÃO E REMOÇÃO |=========================*/
 
@@ -105,20 +105,18 @@ ul {list-style-type: none; display: flex; flex-wrap: wrap; justify-content: spac
 	.sobre {margin: auto; width: 60%;}
 }
 
-@media (max-width: 800px) {
-	.logo_mobile {display: block; width: 50px; margin: auto; padding-top: 15px;  -webkit-filter: drop-shadow(2px 2px 1px black);}
-	
+@media (max-width: 800px) {	
 	section, .playlists {grid-template-columns: auto;}
 }
 
 /*===============================| MOBILE |===============================*/
 
 @media (max-width: 500px) {
-	::-webkit-scrollbar, #logo_nav_desktop, #wallpaper, #key, #darkmode, #playlists, #changelog, #sobre, #entradas, #navhide2, #color {display: none;}
+	::-webkit-scrollbar, #logo, #wallpaper, #key, #darkmode, #playlists, #changelog, #sobre, #entradas, #show_desktop, #color {display: none;}
 	
 	.sobre {width: auto; margin: 0px;}
 	
-	.logo_mobile {display: block; width: 50px; margin: auto; padding-top: 15px;  -webkit-filter: drop-shadow(2px 2px 1px black);}
+	.logo_mobile {position: static; display: block; width: auto; height: 60px; margin: auto; padding-top: 15px;  -webkit-filter: drop-shadow(2px 2px 1px black);}
 	
 	main {margin-left: 0px;}
 	
@@ -135,7 +133,7 @@ ul {list-style-type: none; display: flex; flex-wrap: wrap; justify-content: spac
 	nav img {transform: translate(-50%,-50%); position: relative; top: 50%; left: 50%; height: 25px;}
 	nav p {display: none;}
 
-	#navhide {display: block; background-image: linear-gradient(to right, #662D8C, #ED1E79);}
+	#show_mobile {display: block; background-image: linear-gradient(to right, #662D8C, #ED1E79);}
 	
     input {margin-left: -10px; margin-top: -10px; width: 40px; height: 40px; padding: 5px; border-radius: 50%;}
 }

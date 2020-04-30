@@ -66,7 +66,11 @@ function logohide() {
         $(".logo_fix").fadeTo(100, 0.2);
     } else {
 		$("nav, main").fadeIn(100);
-		$(".logo_fix").fadeOut(100);
+		if ($(window).width() >= 500) {
+			$(".logo_fix").fadeOut(100);
+		} else {
+			$(".logo_fix").fadeTo(100, 1);
+		}
     }
 };
 
@@ -130,122 +134,21 @@ $('body').css({"background-image" : 'radial-gradient(transparent, black 250%), u
 
 /*==============================| RANDOM BG |==============================*/
 
+// Botão de navegação Desktop
 $(function() {
-    $("#navhide").click(function(){
-    function animateCSS(element, animationName, callback) {
-    const node = document.querySelector(element)
-    node.classList.add('animated', animationName)
-    function handleAnimationEnd() {
-        node.classList.remove('animated', animationName)
-        node.removeEventListener('animationend', handleAnimationEnd)
-        if (typeof callback === 'function') callback()
-        }
-    node.addEventListener('animationend', handleAnimationEnd)
-    }
-    
-    if (navhide == 0){
-    var j = $('nav div').length - 2; // Conta quantas navegações tem menos o dois primeiros
-    function repeat2() {
-        if (j > 1) { // Esconder todas as navegações menos a primeira
-            animateCSS('nav div:nth-last-child('+j+')', 'fadeOut', function() {
-                $('nav div:nth-last-child('+j+')').hide();
-                j--;
-                repeat2();
-            });
-        }
-    }
-    repeat2();
-        $("#navhide img").attr("src","img/icon/menu_0.png");
-        navhide = 1;
-    } else {
-    var i = 2;
-    function repeat() {
-        if (i <= $('nav div').length - 2) {
-            $('nav div:nth-last-child('+i+')').show();
-            animateCSS('nav div:nth-last-child('+i+')', 'fadeInUp', function() {
-                i++;
-                repeat();            
-            });
-        }
-    }
-    repeat();
-        $("nav div:last-child").css("margin-top", "10px");
-        $("#navhide img").attr("src","img/icon/menu_1.png");
-        navhide = 0;
-    }
-});
-
-$("#navhide2").click(function(){
-    if (navhide2 == 1) {
-        $("nav p").hide();
-        $("main").css("margin-left", $("nav div").innerWidth()); // Detecta o tamanho da nav
-        $("#navhide2 img").attr("src","img/icon/menu_0.png");
-        navhide2 = 0
-    } else {
-        $("nav p").show();
-        $("main").css("margin-left", $("nav div").innerWidth()); // Detecta o tamanho da nav
-        $("#navhide2 img").attr("src","img/icon/menu_1.png");
-        navhide2 = 1
-    }
-});
-});
-
-$("#navhide").click(function(){
-    function animateCSS(element, animationName, callback) {
-    const node = document.querySelector(element)
-    node.classList.add('animated', animationName)
-    function handleAnimationEnd() {
-        node.classList.remove('animated', animationName)
-        node.removeEventListener('animationend', handleAnimationEnd)
-        if (typeof callback === 'function') callback()
-        }
-    node.addEventListener('animationend', handleAnimationEnd)
-    }
-    
-    if (navhide == 0){
-    var j = $('nav div').length - 2; // Conta quantas navegações tem menos o dois primeiros
-    function repeat2() {
-        if (j > 1) { // Esconder todas as navegações menos a primeira
-            animateCSS('nav div:nth-last-child('+j+')', 'fadeOut', function() {
-                $('nav div:nth-last-child('+j+')').hide();
-                j--;
-                repeat2();
-            });
-        }
-    }
-    repeat2();
-        $("#navhide img").attr("src","img/icon/menu_0.png");
-        navhide = 1;
-    } else {
-    var i = 2;
-    function repeat() {
-        if (i <= $('nav div').length - 2) {
-            $('nav div:nth-last-child('+i+')').show();
-            animateCSS('nav div:nth-last-child('+i+')', 'fadeInUp', function() {
-                i++;
-                repeat();            
-            });
-        }
-    }
-    repeat();
-        $("nav div:last-child").css("margin-top", "10px");
-        $("#navhide img").attr("src","img/icon/menu_1.png");
-        navhide = 0;
-    }
-});
-
-$("#navhide2").click(function(){
-    if (navhide2 == 1) {
-        $("nav p").hide();
-        $("main").css("margin-left", $("nav div").innerWidth()); // Detecta o tamanho da nav
-        $("#navhide2 img").attr("src","img/icon/menu_0.png");
-        navhide2 = 0
-    } else {
-        $("nav p").show();
-        $("main").css("margin-left", $("nav div").innerWidth()); // Detecta o tamanho da nav
-        $("#navhide2 img").attr("src","img/icon/menu_1.png");
-        navhide2 = 1
-    }
+	$("#show_desktop").click(function(){
+		if (show_desktop == 1) {
+			$("nav p").hide();
+			$("main").css("margin-left", $("nav div").innerWidth()); // Detecta o tamanho da nav
+			$("#show_desktop img").attr("src","img/icon/menu_0.png");
+			show_desktop = 0
+		} else {
+			$("nav p").show();
+			$("main").css("margin-left", $("nav div").innerWidth()); // Detecta o tamanho da nav
+			$("#show_desktop img").attr("src","img/icon/menu_1.png");
+			show_desktop = 1
+		}
+	});
 });
 
 function reset() {
