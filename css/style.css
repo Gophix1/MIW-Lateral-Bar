@@ -29,7 +29,7 @@ body {background-repeat: no-repeat; background-attachment: fixed; background-siz
 
 /*=========================| DESATIVAÇÃO E REMOÇÃO |========================*/
 
-nav, nav img, changelog div {-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-touch-callout: none;}
+nav, nav img, .changelog div {-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-touch-callout: none;}
 
 body::-webkit-scrollbar, input, .changelog span, #navhide, nav p, .sobre, .changelog, .playlists, .logo_desktop, .logo_mobile {display: none;}
 
